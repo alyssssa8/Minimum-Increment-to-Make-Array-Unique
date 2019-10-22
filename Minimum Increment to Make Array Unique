@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int minIncrementForUnique(vector<int>& A) {       
+        int arr[40001]={0};
+        int ans = 0;
+        int taken = 0;
+       
+        for(auto i: A){
+            arr[i]++;
+        }
+        
+        for (auto i :arr){
+            cout<<i<<endl;
+            if (i>=2){
+                taken+= i-1;
+                ans-= i * (i - 1);
+            }
+            else if (taken >0 && i == 0){
+                taken--;
+                ans+= i;
+            }
+        }
+        return ans;
+    }
+};
